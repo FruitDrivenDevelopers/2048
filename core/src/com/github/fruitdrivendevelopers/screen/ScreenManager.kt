@@ -8,12 +8,9 @@ class ScreenManager private constructor() {
 
     companion object {
         private var instance: ScreenManager? = null
-        fun getInstance(): ScreenManager {
-            if (instance == null) {
-                instance = ScreenManager()
-            }
 
-            return instance!!
+        fun getInstance(): ScreenManager {
+            return instance ?: return ScreenManager()
         }
     }
 

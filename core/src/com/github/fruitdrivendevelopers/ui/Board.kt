@@ -31,13 +31,11 @@ class Board(private var scoreChanged: ScoreChanged): Table() {
     }
 
     fun onSwipe(direction: Direction) {
-        var moved = false
-
-        when(direction){
-            Direction.UP -> {moved = handleSwipeUp()}
-            Direction.DOWN -> {moved = handleSwipeDown()}
-            Direction.RIGHT -> {moved = handleSwipeRight()}
-            Direction.LEFT -> {moved = handleSwipeLeft()}
+        val moved = when(direction) {
+            Direction.UP -> handleSwipeUp()
+            Direction.DOWN -> handleSwipeDown()
+            Direction.RIGHT -> handleSwipeRight()
+            Direction.LEFT -> handleSwipeLeft()
         }
 
         if (moved) {

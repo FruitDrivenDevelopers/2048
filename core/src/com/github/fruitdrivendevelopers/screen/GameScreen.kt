@@ -10,9 +10,7 @@ import com.github.fruitdrivendevelopers.ui.Board
 import com.github.fruitdrivendevelopers.util.Direction
 import com.github.fruitdrivendevelopers.util.SwipeListener
 
-
 class GameScreen : AbstractScreen(), SwipeListener.SwipeCallback, Board.ScoreChanged {
-    private val SCORE_PREFIX = "Score: "
     private var board: Board = Board(this)
     private val style: Label.LabelStyle = Label.LabelStyle(BitmapFont().apply { data.scale(4f) }, Color.WHITE)
     private var label: Label = Label(SCORE_PREFIX, style)
@@ -21,7 +19,6 @@ class GameScreen : AbstractScreen(), SwipeListener.SwipeCallback, Board.ScoreCha
         super.show()
 
         Gdx.input.inputProcessor = GestureDetector(SwipeListener(this))
-
 
         board.setFillParent(true)
         board.isTransform = true
@@ -50,5 +47,9 @@ class GameScreen : AbstractScreen(), SwipeListener.SwipeCallback, Board.ScoreCha
     override fun scoreChanged(score: Int) {
         label.setText(SCORE_PREFIX + score.toString())
         label.setPosition(width/2,height - label.height, Align.center)
+    }
+
+    companion object {
+        const val SCORE_PREFIX = "Score: "
     }
 }

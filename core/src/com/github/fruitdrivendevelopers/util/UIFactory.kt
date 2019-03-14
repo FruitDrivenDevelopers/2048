@@ -1,4 +1,4 @@
-package pl.jutupe.util
+package com.github.fruitdrivendevelopers.util
 
 import com.github.fruitdrivendevelopers.screen.ScreenManager
 import com.badlogic.gdx.scenes.scene2d.InputListener
@@ -11,18 +11,14 @@ import com.badlogic.gdx.scenes.scene2d.ui.ImageButton
 
 object UIFactory {
     fun createButton(texture: Texture): ImageButton {
-        return ImageButton(
-                TextureRegionDrawable(
-                        TextureRegion(texture)))
+        return ImageButton(TextureRegionDrawable(TextureRegion(texture)))
     }
 
-    fun createListener(dstScreen: ScreenEnum, vararg params: Any): InputListener {
-        return object : InputListener() {
-            override fun touchDown(event: InputEvent, x: Float,
-                                   y: Float, pointer: Int, button: Int): Boolean {
-                ScreenManager.getInstance().showScreen(dstScreen, params)
-                return false
+    fun createListener(dstScreen: ScreenEnum, vararg params: Any) =
+            object : InputListener() {
+                override fun touchDown(event: InputEvent, x: Float, y: Float, pointer: Int, button: Int): Boolean {
+                    ScreenManager.getInstance().showScreen(dstScreen, params)
+                    return false
+                }
             }
-        }
-    }
 }
