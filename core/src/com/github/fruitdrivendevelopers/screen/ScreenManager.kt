@@ -10,7 +10,11 @@ class ScreenManager private constructor() {
         private var instance: ScreenManager? = null
 
         fun getInstance(): ScreenManager {
-            return instance ?: return ScreenManager()
+            if (instance == null) {
+                instance = ScreenManager()
+            }
+
+            return instance!!
         }
     }
 
